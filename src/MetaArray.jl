@@ -34,7 +34,7 @@ end
 for f in [:can_change_size, :defines_strides, :known_size, :known_length, :axes_types,
    :known_offsets, :known_strides, :contiguous_axis, :contiguous_axis_indicator,
    :stride_rank, :contiguous_batch_size,:known_first, :known_last, :known_step]
-    eval(:(ArrayInterface.$(f)(@nospecialize T::Type{<:MetaArray}) = ArrayInterface.$(f)(parent_type(T))))
+    eval(:(StaticArrayInterface.$(f)(@nospecialize T::Type{<:MetaArray}) = StaticArrayInterface.$(f)(parent_type(T))))
 end
 
 Base.pointer(@nospecialize(x::MetaArray), n::Integer) = pointer(parent(x), n)
