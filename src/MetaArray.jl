@@ -40,7 +40,7 @@ end
 Base.pointer(@nospecialize(x::MetaArray), n::Integer) = pointer(parent(x), n)
 
 for f in [:axes, :size, :strides, :offsets]
-    eval(:(ArrayInterface.$(f)(@nospecialize(x::MetaArray)) = ArrayInterface.$f(parent(x))))
+    eval(:(StaticArrayInterface.$(f)(@nospecialize(x::MetaArray)) = StaticArrayInterface.$f(parent(x))))
 end
 
 Base.copy(A::MetaArray) = copy_metadata(A, copy(parent(A)))
